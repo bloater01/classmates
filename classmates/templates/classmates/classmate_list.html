@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classmates</title>
+    <style>
+        body {
+            /* Gradient background */
+            background: linear-gradient(to right, #ff8c00, #ff0080);
+            /* Add any other styles you need */
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            /* Add more styles as needed */
+        }
+
+        table {
+            /* Style for the table */
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            /* Add more styles as needed */
+        }
+
+        th, td {
+            /* Style for table header and cells */
+            border: 1px solid white;
+            padding: 8px;
+            text-align: left;
+            /* Add more styles as needed */
+        }
+
+        th {
+            /* Style for table header */
+            background-color: #333;
+            color: white;
+            /* Add more styles as needed */
+        }
+
+        a {
+            /* Style for links */
+            color: white;
+            text-decoration: none;
+            /* Add more styles as needed */
+        }
+    </style>
+</head>
+<body>
+
+<h1>Classmates</h1>
+
+<table border="2">
+<thead>
+    <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>View</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    {% for classmate in object_list %}
+    <tr>
+    <td>{{ classmate.firstname }}</td>
+    <td>{{ classmate.lastname }}</td>
+    <td>{{ classmate.age }}</td>
+    <td>{{ classmate.gender }}</td>
+    <td><a href="{% url "classmate_view" classmate.id %}">view</a></td>
+    <td><a href="{% url "classmate_edit" classmate.id %}">edit</a></td>
+    <td><a href="{% url "classmate_delete" classmate.id %}">delete</a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+<a href="{% url "classmate_new" %}">New</a>
+
+
